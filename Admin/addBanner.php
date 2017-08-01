@@ -3,7 +3,7 @@
 ?>
     <?php
     if($_SESSION['roleId'] > 4){
-        header("Location:index.php");   
+        header("Location:index.php");   //It is for access role.
     }
 ?>
         <?php
