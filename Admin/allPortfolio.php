@@ -2,18 +2,18 @@
     require_once "functions/function.php";
 ?>
 <?php
-    if($_SESSION['roleId'] > 4){
+    if($_SESSION['roleId'] > 3){
         header("Location:index.php");   
     }
 ?>
 <?php
-    if(isset($_GET['galleryDeleteId']) && $_GET['galleryDeleteId'] != NULL){
-        $galleryId = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['galleryDeleteId']);
-        $delQuery = "delete from tbl_gallery where galleryId='$galleryId'";
+    if(isset($_GET['portfolioDeleteId']) && $_GET['portfolioDeleteId'] != NULL){
+        $portfolioId = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['portfolioDeleteId']);
+        $delQuery = "delete from tbl_portfolio where portfolioId='$portfolioId'";
         if(mysqli_query($con,$delQuery)){
-            $delMsg = "Image delete success";
+            $delMsg = "Portfolio delete success";
         }else{
-            $delMsg = "Image not deleted, something wrong";
+            $delMsg = "Portfolio not deleted, something wrong";
         }
     }
 ?>
@@ -26,10 +26,10 @@
                 	<div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="col-md-9 heading_title">
-                                All Gallery Information View
+                                All Portfolio Information View
                              </div>
                              <div class="col-md-3 text-right">
-                             	<a href="addGallery.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> Add gallery</a>
+                             	<a href="addPortfolio.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> Add Portfolio</a>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -43,27 +43,34 @@
                           		<thead class="table_head">
                             		<tr>
                                     	<th>S.N</th>
-                                    	<th>Image Uploader</th>
-                                        <th>Image</th>
+                                    	<th>Portfolio Name</th>
+                                        <th>Portfolio Status</th>
+                                        <th class="hidden-xs">Portfolio Image</th>
+                                        <th class="hidden-xs">Portfolio Title</th>
                                         <th>Manage</th>
                                     </tr>
                             	</thead>
                                 <tbody>
                                  <?php
-                                    $query = "SELECT * FROM tbl_gallery ORDER BY galleryId DESC";
+                                    $query = "SELECT * FROM tbl_portfolio ORDER BY portfolioId DESC";
                                     $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
                                     if($result){
                                         $i=0;
-                                        foreach($result as $gallery){
+                                        foreach($result as $portfolio){
                                  ?>
                                 	<tr>
                                         <td><?=++$i;?></td>
-                                        <td><a href="viewUser.php?userViewId=<?=$gallery['galleryUploaderId'];?>"><?=$gallery['galleryUploaderName'];?></a></td>
-                                        <td><img src="uploads/galleryImage/<?=$gallery['galleryImage'];?>" alt="" style="width:270px;height:100px;"></td>                                       
+                                    	<td><?=$portfolio['portfolioName'];?></td>
+                                        <td><?php if($portfolio['portfolioStatus']==1){echo "Unpublish";}else{echo "Publish";}?></td>
+                                        <td class="hidden-xs"><img src="uploads/portfolioImage/<?=$portfolio['portfolioImage'];?>" alt="" style="width:70px;height:50px;"></td>
+                                        <td class="hidden-xs"><?=textShorten($portfolio['portfolioTitle'],50);?>...</td>
+                                        
                                         <td>
-                                        	<a href="viewgallery.php?galleryViewId=<?=$gallery['galleryId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                           <a href="galleryEdit.php?galleryEditId=<?=$gallery['galleryId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
-                                            <a onclick="return confirm('Are you sure to remove this gallery');" href="?galleryDeleteId=<?=$gallery['galleryId'];?>"><i class="fa fa-trash fa-lg"></i></a>
+                                        	<a href="viewportfolio.php?portfolioViewId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
+                                           <a href="portfolioEdit.php?portfolioEditId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
+                                           <?php if($_SESSION['roleId'] <= 2 || $portfolio['portfolioUploaderId'] == $_SESSION['userId']){ ?>
+                                            <a onclick="return confirm('Are you sure to remove this portfolio');" href="?portfolioDeleteId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-trash fa-lg"></i></a>
+                                          <?php } ?>
                                         </td>
                                     </tr>
                                     <?php } } ?>

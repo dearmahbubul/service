@@ -2,18 +2,18 @@
     require_once "functions/function.php";
 ?>
 <?php
-    if($_SESSION['roleId'] > 4){
+    if($_SESSION['roleId'] > 3){
         header("Location:index.php");   
     }
 ?>
 <?php
-    if(isset($_GET['galleryDeleteId']) && $_GET['galleryDeleteId'] != NULL){
-        $galleryId = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['galleryDeleteId']);
-        $delQuery = "delete from tbl_gallery where galleryId='$galleryId'";
+    if(isset($_GET['menuDeleteId']) && $_GET['menuDeleteId'] != NULL){
+        $menuId = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['menuDeleteId']);
+        $delQuery = "delete from tbl_menu where menuId='$menuId'";
         if(mysqli_query($con,$delQuery)){
-            $delMsg = "Image delete success";
+            $delMsg = "Menu delete success";
         }else{
-            $delMsg = "Image not deleted, something wrong";
+            $delMsg = "Menu not deleted, something wrong";
         }
     }
 ?>
@@ -26,10 +26,10 @@
                 	<div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="col-md-9 heading_title">
-                                All Gallery Information View
+                                All Menu Information View
                              </div>
                              <div class="col-md-3 text-right">
-                             	<a href="addGallery.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> Add gallery</a>
+                             	<a href="addmenu.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> Add menu</a>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -42,28 +42,32 @@
                           <table class="table table-responsive table-striped table-hover table_cus">
                           		<thead class="table_head">
                             		<tr>
-                                    	<th>S.N</th>
-                                    	<th>Image Uploader</th>
-                                        <th>Image</th>
+                                    	<th>menu position</th>
+                                    	<th>menu name</th>
+                                        <th>menu status</th>
+                                        <th>menu URL</th>
+                                        <th>menu uploaded</th>
                                         <th>Manage</th>
                                     </tr>
                             	</thead>
                                 <tbody>
                                  <?php
-                                    $query = "SELECT * FROM tbl_gallery ORDER BY galleryId DESC";
+                                    $query = "SELECT * FROM tbl_menu ORDER BY menuPosition ASC";
                                     $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
                                     if($result){
-                                        $i=0;
-                                        foreach($result as $gallery){
+                                        foreach($result as $menu){
                                  ?>
                                 	<tr>
-                                        <td><?=++$i;?></td>
-                                        <td><a href="viewUser.php?userViewId=<?=$gallery['galleryUploaderId'];?>"><?=$gallery['galleryUploaderName'];?></a></td>
-                                        <td><img src="uploads/galleryImage/<?=$gallery['galleryImage'];?>" alt="" style="width:270px;height:100px;"></td>                                       
+                                        <td><?php if(empty($menu['menuPosition'])){echo "Not define";}else{echo $menu['menuPosition'];}?></td>
+                                    	<td><?=$menu['menuName'];?></td>
+                                        <td><?php if($menu['menuStatus']==1){echo "Unpublish";}else{echo "Publish";}?></td>
+                                        <td><?=$menu['menuUrl'];?></td>
+                                        <td><?=formatDate($menu['menuUploadeDate']);?></td>
+                                        
                                         <td>
-                                        	<a href="viewgallery.php?galleryViewId=<?=$gallery['galleryId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                           <a href="galleryEdit.php?galleryEditId=<?=$gallery['galleryId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
-                                            <a onclick="return confirm('Are you sure to remove this gallery');" href="?galleryDeleteId=<?=$gallery['galleryId'];?>"><i class="fa fa-trash fa-lg"></i></a>
+                                        	
+                                           <a href="Editmenu.php?menuEditId=<?=$menu['menuId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
+                                            <a onclick="return confirm('Are you sure to remove this menu');" href="?menuDeleteId=<?=$menu['menuId'];?>"><i class="fa fa-trash fa-lg"></i></a>
                                         </td>
                                     </tr>
                                     <?php } } ?>

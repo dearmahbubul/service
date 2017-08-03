@@ -1,3 +1,14 @@
+	<style>
+        .gallery{
+            margin: 0;
+            padding: 0;
+        }
+        .gallery li{
+            list-style: none;
+        }
+        .gallery li a{}
+        .gallery{}
+    </style>
 	<footer>
 	<div class="container">
 		<div class="row">
@@ -45,9 +56,20 @@
 			</div>
 			<div class="col-lg-3">
 				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
+					<h5 class="widgetheading">Photostream</h5>
 					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+						<!--<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>-->
+						<ul class="gallery">
+                            <?php
+                               $galleryQuery = "SELECT * FROM tbl_gallery ORDER BY galleryId DESC LIMIT 8"; 
+                               $galleryResult = mysqli_query($con,$galleryQuery);
+                               if($galleryResult){
+                                  while($gallery = $galleryResult->fetch_array()){
+                                      extract($gallery);
+                             ?>
+						    <li><a href="<?=$galleryURL;?>" title="Facebook <?=$galleryUploaderName;?>"><img src="Admin/uploads/galleryImage/<?=$galleryImage;?>" alt=""></a></li>
+						    <?php } }else{echo "";} ?>
+						</ul>
 					</div>
 					<div class="clear">
 					</div>

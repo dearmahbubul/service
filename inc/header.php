@@ -39,18 +39,23 @@
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li class="dropdown">
+                       <?php
+                            global $con;
+                            $query = "SELECT * FROM tbl_menu where menuStatus='2' ORDER BY menuPosition ASC";
+                            $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
+                            if($result){
+                                foreach($result as $menu){
+                         ?>
+                        <li><a href="<?=$menu['menuUrl'];?>"><?=$menu['menuName'];?></a></li>
+                        <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.php">Typography</a></li>
+                                <li class="active"><a href="typography.php">Typography</a></li>
                                 <li><a href="components.php">Components</a></li>
 								<li><a href="pricingbox.php">Pricing box</a></li>
                             </ul>
-                        </li>
-                        <li><a href="portfolio.php">Portfolio</a></li>
-                        <li><a href="blog.php">Blog</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        </li>-->
+                        <?php } } ?>
                     </ul>
                 </div>
             </div>

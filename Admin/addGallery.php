@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           
             $ImageName = 'gallery-'.time().'-'.rand(10000,100000).'.'.pathinfo($galleryImage['name'],PATHINFO_EXTENSION);
     
-            $query = "insert into tbl_gallery(galleryImage,galleryUploaderName,galleryUploaderId,galleryURL) values('$galleryImage','$galleryUploaderName','$galleryUploaderId','$galleryURL')";
+            $query = "insert into tbl_gallery(galleryImage,galleryUploaderName,galleryUploaderId,galleryURL) values('$ImageName','$galleryUploaderName','$galleryUploaderId','$galleryURL')";
             if(mysqli_query($con,$query)){
                 move_uploaded_file($galleryImage['tmp_name'],'uploads/galleryImage/'.$ImageName);
                 $galleryMsg = "Gallery Image Uploaded succesfully";
