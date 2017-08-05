@@ -3,74 +3,33 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
+				    <?php
+                        global $con;
+                        $query = "SELECT * FROM tbl_pageandfeature WHERE pStatus='2' and pCategory='1' ORDER BY pId DESC LIMIT 4";
+                        $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
+                        if($result){
+                            foreach($result as $feature){
+                            extract($feature);
+                    ?>
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Fully responsive</h4>
+								<h4><?=$pTitle?></h4>
 								<div class="icon">
 								<i class="fa fa-desktop fa-3x"></i>
 								</div>
 								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								 <?=textShorten($pDetails,50);?>
 								</p>
 									
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="?Id=<?=$pId?>">Learn more</a>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Modern Style</h4>
-								<div class="icon">
-								<i class="fa fa-pagelines fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Customizable</h4>
-								<div class="icon">
-								<i class="fa fa-edit fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Valid HTML5</h4>
-								<div class="icon">
-								<i class="fa fa-code fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
+					<?php } } ?>
+					
 				</div>
 			</div>
 		</div>
@@ -90,50 +49,28 @@
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
 						<!-- Item Project and Filter Name -->
-						<li class="col-lg-3 design" data-id="id-0" data-type="web">
+						<?php
+                            $query = "SELECT * FROM tbl_portfolio WHERE portfolioStatus='2' ORDER BY portfolioId DESC LIMIT 4";
+                            $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
+                            if($result){
+                                foreach($result as $portfolio){
+                                extract($portfolio);
+                         ?>
+						<li class="col-lg-3 design" data-id="id-0" data-type="<?php if($portfolio_categoryId == 1){echo 'web';}elseif($portfolio_categoryId == 2){echo 'icon';}elseif($portfolio_categoryId == 3){echo 'graphic';} ?>">
 						<div class="item-thumbs">
 						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1" href="img/works/1.jpg">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<?=$portfolioName;?>" href="Admin/uploads/portfolioImage/<?=$portfolioImage;?>">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
 						<!-- Thumb Image and Description -->
-						<img src="img/works/1.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+						<img src="Admin/uploads/portfolioImage/<?=$portfolioImage;?>" alt="<?=$portfolioTitle;?>">
 						</div>
 						</li>
+						<?php } } ?>
 						<!-- End Item Project -->
 						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2" href="img/works/2.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/2.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3" href="img/works/3.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/3.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4" href="img/works/4.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/4.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
+						
 						<!-- End Item Project -->
 					</ul>
 					</section>

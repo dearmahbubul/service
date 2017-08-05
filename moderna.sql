@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2017 at 06:31 AM
+-- Generation Time: Aug 05, 2017 at 04:50 AM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -51,7 +51,8 @@ CREATE TABLE `tbl_admin_user` (
 
 INSERT INTO `tbl_admin_user` (`userId`, `userName`, `userEmail`, `userPass`, `userNumber`, `userAddress`, `userCity`, `userCountry`, `roleId`, `userGender`, `userImage`, `userComment`, `userAddDate`, `userStatus`) VALUES
 (1, 'Mahbubul Alam', 'mahbubrahman5676@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '', '#', '#', '#', 1, 1, 'user-1500788232-26592.jpg', NULL, '2017-07-23 05:26:34', 0),
-(2, 'Ibrahim', 'ibrahim@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '01774573275', '#', '#', '#', 4, 1, 'user-1500787932-83741.jpg', NULL, '2017-07-23 05:30:32', 0);
+(2, 'Ibrahim', 'ibrahim@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '01774573275', '#', '#', '#', 4, 1, 'user-1500787932-83741.jpg', NULL, '2017-07-23 05:30:32', 0),
+(3, 'Mitul Ahmed', 'mitul@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '01774573275', '#', '#', '#', 3, 1, NULL, NULL, '2017-08-03 14:17:49', 0);
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ INSERT INTO `tbl_admin_user_role` (`roleId`, `roleName`, `roleStatus`, `roleCrea
 (2, 'Author', 2, '2017-07-23 04:52:15'),
 (3, 'Editor', 2, '2017-07-23 04:52:15'),
 (4, 'Adminstration', 2, '2017-07-23 04:52:15'),
-(5, 'Subscriber', 1, '2017-07-23 04:52:15');
+(5, 'Subscriber', 2, '2017-07-23 04:52:15');
 
 -- --------------------------------------------------------
 
@@ -136,6 +137,41 @@ INSERT INTO `tbl_contact` (`contactId`, `contactName`, `contactEmail`, `contactS
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_description`
+--
+
+CREATE TABLE `tbl_description` (
+  `value` varchar(20) NOT NULL,
+  `website_heading` varchar(100) NOT NULL,
+  `companyName` varchar(40) NOT NULL,
+  `companyAddress` varchar(70) NOT NULL,
+  `companyPhone` varchar(35) NOT NULL,
+  `companyEmail` varchar(35) NOT NULL,
+  `copyright` varchar(30) NOT NULL,
+  `facebookUrl` varchar(50) NOT NULL,
+  `twitterUrl` varchar(50) NOT NULL,
+  `linkedinUrl` varchar(50) NOT NULL,
+  `pinterestUrl` varchar(50) NOT NULL,
+  `googleplusUrl` varchar(50) NOT NULL,
+  `companyLogo` varchar(100) NOT NULL,
+  `companyOwner` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_description`
+--
+
+INSERT INTO `tbl_description` (`value`, `website_heading`, `companyName`, `companyAddress`, `companyPhone`, `companyEmail`, `copyright`, `facebookUrl`, `twitterUrl`, `linkedinUrl`, `pinterestUrl`, `googleplusUrl`, `companyLogo`, `companyOwner`) VALUES
+('company_details', '', 'Mahbubul company Inc', 'Sukrabad, Dhanmondi', '+88 01774-573275', 'mahbubulalam5676@gmail.com', '', '', '', '', '', '', '', ''),
+('company_owner', '', '', '', '', '', '', '', '', '', '', '', '', 'Mahbubul Alam'),
+('copyright', '', '', '', '', '', 'Mahbubul', '', '', '', '', '', '', ''),
+('logo', '', '', '', '', '', '', '', '', '', '', '', 'logo-2321323.jpg', ''),
+('social_url', '', '', '', '', '', '', 'https://www.facebook.com/mahbub5676', 'https://www.twitter.com/mahbub5676', 'https://www.linkedin.com/mahbub5676', 'https://www.pinterest.com/mahbub5676', 'https://www.googleplus.com/mahbub5676', '', ''),
+('website_heading', 'Mahbubul Business of Export', '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_gallery`
 --
 
@@ -145,8 +181,102 @@ CREATE TABLE `tbl_gallery` (
   `galleryURL` varchar(120) NOT NULL,
   `galleryImageUploadeTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `galleryUploaderId` int(3) NOT NULL,
-  `galleryUploaderName` int(3) NOT NULL
+  `galleryUploaderName` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_gallery`
+--
+
+INSERT INTO `tbl_gallery` (`galleryId`, `galleryImage`, `galleryURL`, `galleryImageUploadeTime`, `galleryUploaderId`, `galleryUploaderName`) VALUES
+(4, 'gallery-1501767935-11963.jpg', '', '2017-08-03 13:45:35', 1, 'Mahbubul Alam'),
+(5, 'gallery-1501769332-50239.jpg', 'https://www.facebook.com/mahbub5676', '2017-08-03 14:08:52', 1, 'Mahbubul Alam'),
+(6, 'gallery-1501769339-55763.jpg', '', '2017-08-03 14:08:59', 1, 'Mahbubul Alam'),
+(7, 'gallery-1501769345-30325.jpg', '', '2017-08-03 14:09:05', 1, 'Mahbubul Alam'),
+(8, 'gallery-1501769351-12729.jpg', '', '2017-08-03 14:09:11', 1, 'Mahbubul Alam'),
+(9, 'gallery-1501769357-40136.jpg', '', '2017-08-03 14:09:17', 1, 'Mahbubul Alam'),
+(10, 'gallery-1501769361-14852.jpg', '', '2017-08-03 14:09:21', 1, 'Mahbubul Alam'),
+(11, 'gallery-1501769448-97416.jpg', 'https://www.facebook.com/mahbub5676', '2017-08-03 14:10:48', 1, 'Mahbubul Alam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_menu`
+--
+
+CREATE TABLE `tbl_menu` (
+  `menuId` int(11) NOT NULL,
+  `menuName` varchar(50) NOT NULL,
+  `menuUrl` varchar(60) NOT NULL,
+  `menuUploaderId` int(3) NOT NULL,
+  `menuStatus` int(2) NOT NULL,
+  `menuUploadeDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `menuPosition` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_menu`
+--
+
+INSERT INTO `tbl_menu` (`menuId`, `menuName`, `menuUrl`, `menuUploaderId`, `menuStatus`, `menuUploadeDate`, `menuPosition`) VALUES
+(2, 'Portfolio', 'portfolio.php', 1, 2, '2017-08-03 18:59:06', 2),
+(3, 'Blog', 'blog.php', 1, 2, '2017-08-03 18:59:21', 3),
+(4, 'Contact', 'contact.php', 1, 2, '2017-08-03 18:59:48', 4),
+(5, 'Home', 'index.php', 1, 2, '2017-08-03 19:08:14', 1),
+(6, 'Feature', 'feature.php', 1, 1, '2017-08-03 19:29:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pageandfeature`
+--
+
+CREATE TABLE `tbl_pageandfeature` (
+  `pId` int(11) NOT NULL,
+  `pTitle` varchar(110) NOT NULL,
+  `pDetails` text NOT NULL,
+  `pCategory` int(11) NOT NULL,
+  `pStatus` int(11) NOT NULL,
+  `pUploaderId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pageandfeature`
+--
+
+INSERT INTO `tbl_pageandfeature` (`pId`, `pTitle`, `pDetails`, `pCategory`, `pStatus`, `pUploaderId`) VALUES
+(1, 'Fully responsive', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis totam voluptatem modi qui fugiat aspernatur iste reprehenderit maxime est sit, consectetur expedita autem sint molestias error vitae enim esse explicabo ut voluptas, tenetur quisquam inventore sed earum. Dolor voluptatum reprehenderit modi commodi voluptate, quia velit aliquid unde fuga perferendis, possimus nesciunt veritatis, temporibus! Deserunt eius laborum perspiciatis fugiat esse praesentium accusantium saepe quae explicabo perferendis at reiciendis quisquam magnam, ad suscipit soluta quam porro consequatur, incidunt assumenda dolores voluptas. Soluta optio eum ipsam dolore assumenda quasi fugit cumque nihil accusamus voluptatibus nostrum cum sunt tempora voluptates hic possimus repellendus, praesentium ad ipsa totam rerum? Qui blanditiis reiciendis, delectus. Voluptatum sint veritatis dicta velit voluptate dignissimos tempore sequi, rem repellat odio cum quae placeat, necessitatibus minus perferendis quaerat labore vel beatae aut! Deleniti voluptate fugit nam placeat vero! Est et corrupti sit, mollitia, optio laborum, accusantium possimus cupiditate dolore consectetur iusto fuga at eius laboriosam velit, magni in? Dicta recusandae molestiae libero, consectetur ratione, perferendis quibusdam iste odit tempora consequuntur praesentium soluta, quia molestias sapiente repudiandae reiciendis vitae corporis consequatur ad. Labore eius, laboriosam deserunt illum veritatis debitis et, alias cupiditate expedita voluptatum veniam odio quisquam earum a perferendis in vel, ab voluptates ipsam harum quidem. Praesentium voluptatem quos corporis quas dolores delectus ea adipisci at doloribus iusto amet sint perspiciatis quod eligendi, distinctio vitae, quaerat dignissimos rem recusandae est quam repellendus, eos quasi tempore. Praesentium nulla optio sapiente repudiandae voluptate nam saepe blanditiis soluta porro earum error quas officia ab debitis, dolores quo commodi eveniet nihil dolorum veniam nobis consequatur. Harum ea officiis dicta voluptas dolorem culpa repellat accusamus totam, libero suscipit est quia nobis, sit atque nisi quam beatae delectus qui magni quis architecto. Sunt similique, deleniti minus dolorem mollitia quaerat quia ipsam amet at voluptatum beatae, saepe. Veritatis ipsam voluptatem, dolor non fugit natus amet delectus pariatur autem provident in unde harum tempore beatae, error, obcaecati rerum voluptatibus magnam minima veniam. Deserunt similique dolorum, ea maxime dolores. Dignissimos culpa animi veritatis optio, sit adipisci, accusantium, aperiam id saepe alias ab accusamus quam voluptatum nisi molestiae obcaecati! Nesciunt deleniti cum totam eos similique fuga placeat animi aliquid nobis, illo dolore officia dolorum nemo pariatur quibusdam vel excepturi magnam dolor quas, blanditiis labore. Reprehenderit voluptate, obcaecati ex pariatur tenetur possimus illum rem veritatis nemo molestiae est beatae ullam esse fugit molestias expedita numquam velit deleniti, sed. Quidem, error, repellendus! Dolores, dicta sapiente ipsum? Assumenda praesentium officia, dolor. Ducimus rem vitae blanditiis fugiat excepturi natus minus veritatis fugit nobis perferendis. Perferendis in illum minus quaerat reiciendis, nostrum. Id minus odit assumenda rem, impedit tempore, commodi ea atque maxime sequi eius pariatur autem et, magnam in harum consequatur illo ipsum ab eaque nihil eveniet voluptates dicta error. Cupiditate, libero. Temporibus dolores distinctio magnam assumenda accusantium alias aperiam velit dolorum quasi laboriosam laborum, pariatur accusamus nostrum fugit illum odit necessitatibus nisi adipisci cum cupiditate nesciunt reiciendis aliquid. Atque quidem reprehenderit, quo omnis modi iure officiis accusantium alias dolorum. Cum, natus, fuga. Veniam, sunt!', 1, 2, 1),
+(2, 'Modern Style', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis totam voluptatem modi qui fugiat aspernatur iste reprehenderit maxime est sit, consectetur expedita autem sint molestias error vitae enim esse explicabo ut voluptas, tenetur quisquam inventore sed earum. Dolor voluptatum reprehenderit modi commodi voluptate, quia velit aliquid unde fuga perferendis, possimus nesciunt veritatis, temporibus! Deserunt eius laborum perspiciatis fugiat esse praesentium accusantium saepe quae explicabo perferendis at reiciendis quisquam magnam, ad suscipit soluta quam porro consequatur, incidunt assumenda dolores voluptas. Soluta optio eum ipsam dolore assumenda quasi fugit cumque nihil accusamus voluptatibus nostrum cum sunt tempora voluptates hic possimus repellendus, praesentium ad ipsa totam rerum? Qui blanditiis reiciendis, delectus. Voluptatum sint veritatis dicta velit voluptate dignissimos tempore sequi, rem repellat odio cum quae placeat, necessitatibus minus perferendis quaerat labore vel beatae aut! Deleniti voluptate fugit nam placeat vero! Est et corrupti sit, mollitia, optio laborum, accusantium possimus cupiditate dolore consectetur iusto fuga at eius laboriosam velit, magni in? Dicta recusandae molestiae libero, consectetur ratione, perferendis quibusdam iste odit tempora consequuntur praesentium soluta, quia molestias sapiente repudiandae reiciendis vitae corporis consequatur ad. Labore eius, laboriosam deserunt illum veritatis debitis et, alias cupiditate expedita voluptatum veniam odio quisquam earum a perferendis in vel, ab voluptates ipsam harum quidem. Praesentium voluptatem quos corporis quas dolores delectus ea adipisci at doloribus iusto amet sint perspiciatis quod eligendi, distinctio vitae, quaerat dignissimos rem recusandae est quam repellendus, eos quasi tempore. Praesentium nulla optio sapiente repudiandae voluptate nam saepe blanditiis soluta porro earum error quas officia ab debitis, dolores quo commodi eveniet nihil dolorum veniam nobis consequatur. Harum ea officiis dicta voluptas dolorem culpa repellat accusamus totam, libero suscipit est quia nobis, sit atque nisi quam beatae delectus qui magni quis architecto. Sunt similique, deleniti minus dolorem mollitia quaerat quia ipsam amet at voluptatum beatae, saepe. Veritatis ipsam voluptatem, dolor non fugit natus amet delectus pariatur autem provident in unde harum tempore beatae, error, obcaecati rerum voluptatibus magnam minima veniam. Deserunt similique dolorum, ea maxime dolores. Dignissimos culpa animi veritatis optio, sit adipisci, accusantium, aperiam id saepe alias ab accusamus quam voluptatum nisi molestiae obcaecati! Nesciunt deleniti cum totam eos similique fuga placeat animi aliquid nobis, illo dolore officia dolorum nemo pariatur quibusdam vel excepturi magnam dolor quas, blanditiis labore. Reprehenderit voluptate, obcaecati ex pariatur tenetur possimus illum rem veritatis nemo molestiae est beatae ullam esse fugit molestias expedita numquam velit deleniti, sed. Quidem, error, repellendus! Dolores, dicta sapiente ipsum? Assumenda praesentium officia, dolor. Ducimus rem vitae blanditiis fugiat excepturi natus minus veritatis fugit nobis perferendis. Perferendis in illum minus quaerat reiciendis, nostrum. Id minus odit assumenda rem, impedit tempore, commodi ea atque maxime sequi eius pariatur autem et, magnam in harum consequatur illo ipsum ab eaque nihil eveniet voluptates dicta error. Cupiditate, libero. Temporibus dolores distinctio magnam assumenda accusantium alias aperiam velit dolorum quasi laboriosam laborum, pariatur accusamus nostrum fugit illum odit necessitatibus nisi adipisci cum cupiditate nesciunt reiciendis aliquid. Atque quidem reprehenderit, quo omnis modi iure officiis accusantium alias dolorum. Cum, natus, fuga. Veniam, sunt!', 1, 2, 1),
+(3, 'Customizable', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis totam voluptatem modi qui fugiat aspernatur iste reprehenderit maxime est sit, consectetur expedita autem sint molestias error vitae enim esse explicabo ut voluptas, tenetur quisquam inventore sed earum. Dolor voluptatum reprehenderit modi commodi voluptate, quia velit aliquid unde fuga perferendis, possimus nesciunt veritatis, temporibus! Deserunt eius laborum perspiciatis fugiat esse praesentium accusantium saepe quae explicabo perferendis at reiciendis quisquam magnam, ad suscipit soluta quam porro consequatur, incidunt assumenda dolores voluptas. Soluta optio eum ipsam dolore assumenda quasi fugit cumque nihil accusamus voluptatibus nostrum cum sunt tempora voluptates hic possimus repellendus, praesentium ad ipsa totam rerum? Qui blanditiis reiciendis, delectus. Voluptatum sint veritatis dicta velit voluptate dignissimos tempore sequi, rem repellat odio cum quae placeat, necessitatibus minus perferendis quaerat labore vel beatae aut! Deleniti voluptate fugit nam placeat vero! Est et corrupti sit, mollitia, optio laborum, accusantium possimus cupiditate dolore consectetur iusto fuga at eius laboriosam velit, magni in? Dicta recusandae molestiae libero, consectetur ratione, perferendis quibusdam iste odit tempora consequuntur praesentium soluta, quia molestias sapiente repudiandae reiciendis vitae corporis consequatur ad. Labore eius, laboriosam deserunt illum veritatis debitis et, alias cupiditate expedita voluptatum veniam odio quisquam earum a perferendis in vel, ab voluptates ipsam harum quidem. Praesentium voluptatem quos corporis quas dolores delectus ea adipisci at doloribus iusto amet sint perspiciatis quod eligendi, distinctio vitae, quaerat dignissimos rem recusandae est quam repellendus, eos quasi tempore. Praesentium nulla optio sapiente repudiandae voluptate nam saepe blanditiis soluta porro earum error quas officia ab debitis, dolores quo commodi eveniet nihil dolorum veniam nobis consequatur. Harum ea officiis dicta voluptas dolorem culpa repellat accusamus totam, libero suscipit est quia nobis, sit atque nisi quam beatae delectus qui magni quis architecto. Sunt similique, deleniti minus dolorem mollitia quaerat quia ipsam amet at voluptatum beatae, saepe. Veritatis ipsam voluptatem, dolor non fugit natus amet delectus pariatur autem provident in unde harum tempore beatae, error, obcaecati rerum voluptatibus magnam minima veniam. Deserunt similique dolorum, ea maxime dolores. Dignissimos culpa animi veritatis optio, sit adipisci, accusantium, aperiam id saepe alias ab accusamus quam voluptatum nisi molestiae obcaecati! Nesciunt deleniti cum totam eos similique fuga placeat animi aliquid nobis, illo dolore officia dolorum nemo pariatur quibusdam vel excepturi magnam dolor quas, blanditiis labore. Reprehenderit voluptate, obcaecati ex pariatur tenetur possimus illum rem veritatis nemo molestiae est beatae ullam esse fugit molestias expedita numquam velit deleniti, sed. Quidem, error, repellendus! Dolores, dicta sapiente ipsum? Assumenda praesentium officia, dolor. Ducimus rem vitae blanditiis fugiat excepturi natus minus veritatis fugit nobis perferendis. Perferendis in illum minus quaerat reiciendis, nostrum. Id minus odit assumenda rem, impedit tempore, commodi ea atque maxime sequi eius pariatur autem et, magnam in harum consequatur illo ipsum ab eaque nihil eveniet voluptates dicta error. Cupiditate, libero. Temporibus dolores distinctio magnam assumenda accusantium alias aperiam velit dolorum quasi laboriosam laborum, pariatur accusamus nostrum fugit illum odit necessitatibus nisi adipisci cum cupiditate nesciunt reiciendis aliquid. Atque quidem reprehenderit, quo omnis modi iure officiis accusantium alias dolorum. Cum, natus, fuga. Veniam, sunt!', 1, 2, 1),
+(4, 'Privacy', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis totam voluptatem modi qui fugiat aspernatur iste reprehenderit maxime est sit, consectetur expedita autem sint molestias error vitae enim esse explicabo ut voluptas, tenetur quisquam inventore sed earum. Dolor voluptatum reprehenderit modi commodi voluptate, quia velit aliquid unde fuga perferendis, possimus nesciunt veritatis, temporibus! Deserunt eius laborum perspiciatis fugiat esse praesentium accusantium saepe quae explicabo perferendis at reiciendis quisquam magnam, ad suscipit soluta quam porro consequatur, incidunt assumenda dolores voluptas. Soluta optio eum ipsam dolore assumenda quasi fugit cumque nihil accusamus voluptatibus nostrum cum sunt tempora voluptates hic possimus repellendus, praesentium ad ipsa totam rerum? Qui blanditiis reiciendis, delectus. Voluptatum sint veritatis dicta velit voluptate dignissimos tempore sequi, rem repellat odio cum quae placeat, necessitatibus minus perferendis quaerat labore vel beatae aut! Deleniti voluptate fugit nam placeat vero! Est et corrupti sit, mollitia, optio laborum, accusantium possimus cupiditate dolore consectetur iusto fuga at eius laboriosam velit, magni in? Dicta recusandae molestiae libero, consectetur ratione, perferendis quibusdam iste odit tempora consequuntur praesentium soluta, quia molestias sapiente repudiandae reiciendis vitae corporis consequatur ad. Labore eius, laboriosam deserunt illum veritatis debitis et, alias cupiditate expedita voluptatum veniam odio quisquam earum a perferendis in vel, ab voluptates ipsam harum quidem. Praesentium voluptatem quos corporis quas dolores delectus ea adipisci at doloribus iusto amet sint perspiciatis quod eligendi, distinctio vitae, quaerat dignissimos rem recusandae est quam repellendus, eos quasi tempore. Praesentium nulla optio sapiente repudiandae voluptate nam saepe blanditiis soluta porro earum error quas officia ab debitis, dolores quo commodi eveniet nihil dolorum veniam nobis consequatur. Harum ea officiis dicta voluptas dolorem culpa repellat accusamus totam, libero suscipit est quia nobis, sit atque nisi quam beatae delectus qui magni quis architecto. Sunt similique, deleniti minus dolorem mollitia quaerat quia ipsam amet at voluptatum beatae, saepe. Veritatis ipsam voluptatem, dolor non fugit natus amet delectus pariatur autem provident in unde harum tempore beatae, error, obcaecati rerum voluptatibus magnam minima veniam. Deserunt similique dolorum, ea maxime dolores. Dignissimos culpa animi veritatis optio, sit adipisci, accusantium, aperiam id saepe alias ab accusamus quam voluptatum nisi molestiae obcaecati! Nesciunt deleniti cum totam eos similique fuga placeat animi aliquid nobis, illo dolore officia dolorum nemo pariatur quibusdam vel excepturi magnam dolor quas, blanditiis labore. Reprehenderit voluptate, obcaecati ex pariatur tenetur possimus illum rem veritatis nemo molestiae est beatae ullam esse fugit molestias expedita numquam velit deleniti, sed. Quidem, error, repellendus! Dolores, dicta sapiente ipsum? Assumenda praesentium officia, dolor. Ducimus rem vitae blanditiis fugiat excepturi natus minus veritatis fugit nobis perferendis. Perferendis in illum minus quaerat reiciendis, nostrum. Id minus odit assumenda rem, impedit tempore, commodi ea atque maxime sequi eius pariatur autem et, magnam in harum consequatur illo ipsum ab eaque nihil eveniet voluptates dicta error. Cupiditate, libero. Temporibus dolores distinctio magnam assumenda accusantium alias aperiam velit dolorum quasi laboriosam laborum, pariatur accusamus nostrum fugit illum odit necessitatibus nisi adipisci cum cupiditate nesciunt reiciendis aliquid. Atque quidem reprehenderit, quo omnis modi iure officiis accusantium alias dolorum. Cum, natus, fuga. Veniam, sunt!', 2, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_portfolio`
+--
+
+CREATE TABLE `tbl_portfolio` (
+  `portfolioId` int(11) NOT NULL,
+  `portfolioTitle` varchar(255) NOT NULL,
+  `portfolioName` varchar(150) NOT NULL,
+  `portfolioImage` varchar(255) NOT NULL,
+  `portfolioStatus` int(2) NOT NULL,
+  `portfolioUploaderId` int(3) NOT NULL,
+  `portfolioUploaderName` varchar(70) NOT NULL,
+  `portfolioUploadeDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `portfolio_categoryId` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_portfolio`
+--
+
+INSERT INTO `tbl_portfolio` (`portfolioId`, `portfolioTitle`, `portfolioName`, `portfolioImage`, `portfolioStatus`, `portfolioUploaderId`, `portfolioUploaderName`, `portfolioUploadeDate`, `portfolio_categoryId`) VALUES
+(1, 'Mahbubul Alam is best Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.', 'PSD Template', 'portfolio-1501792505-32665.jpg', 2, 1, 'Mahbubul Alam', '2017-08-03 20:35:05', 1),
+(2, 'Graphics Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.', 'Mobile Graphics', 'portfolio-1501793318-96404.jpg', 2, 1, 'Mahbubul Alam', '2017-08-03 20:48:38', 2),
+(3, 'Icon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.', 'Love Icon', 'portfolio-1501793359-56133.jpg', 2, 1, 'Mahbubul Alam', '2017-08-03 20:49:19', 3),
+(4, 'Web Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.', 'Tower Web', 'portfolio-1501793409-70554.jpg', 2, 1, 'Mahbubul Alam', '2017-08-03 20:50:09', 1);
 
 -- --------------------------------------------------------
 
@@ -231,10 +361,35 @@ ALTER TABLE `tbl_contact`
   ADD PRIMARY KEY (`contactId`);
 
 --
+-- Indexes for table `tbl_description`
+--
+ALTER TABLE `tbl_description`
+  ADD UNIQUE KEY `value` (`value`);
+
+--
 -- Indexes for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
   ADD PRIMARY KEY (`galleryId`);
+
+--
+-- Indexes for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  ADD PRIMARY KEY (`menuId`),
+  ADD UNIQUE KEY `menuPosition` (`menuPosition`);
+
+--
+-- Indexes for table `tbl_pageandfeature`
+--
+ALTER TABLE `tbl_pageandfeature`
+  ADD PRIMARY KEY (`pId`);
+
+--
+-- Indexes for table `tbl_portfolio`
+--
+ALTER TABLE `tbl_portfolio`
+  ADD PRIMARY KEY (`portfolioId`);
 
 --
 -- Indexes for table `tbl_post`
@@ -257,7 +412,7 @@ ALTER TABLE `tbl_post_category`
 -- AUTO_INCREMENT for table `tbl_admin_user`
 --
 ALTER TABLE `tbl_admin_user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_admin_user_role`
 --
@@ -277,7 +432,22 @@ ALTER TABLE `tbl_contact`
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `galleryId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `galleryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  MODIFY `menuId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_pageandfeature`
+--
+ALTER TABLE `tbl_pageandfeature`
+  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_portfolio`
+--
+ALTER TABLE `tbl_portfolio`
+  MODIFY `portfolioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_post`
 --

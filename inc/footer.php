@@ -15,25 +15,38 @@
 			<div class="col-lg-3">
 				<div class="widget">
 					<h5 class="widgetheading">Get in touch with us</h5>
+					<?php 
+                         global $con;
+                         $query = "SELECT * FROM tbl_description WHERE value='company_details' or value='copyright' or value='social_url'";
+                         $adminResult = mysqli_query($con,$query);
+
+                         if($adminResult){
+                             $result = mysqli_fetch_array($adminResult);
+                             extract($result);
+                    ?>
 					<address>
-					<strong>Moderna company Inc</strong><br>
-					 Modernbuilding suite V124, AB 01<br>
-					 Someplace 16425 Earth </address>
+					<strong><?=$companyName;?></strong><br>
+					 <?=$companyAddress;?> </address>
 					<p>
-						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-						<i class="icon-envelope-alt"></i> email@domainname.com
+						<i class="icon-phone"></i> <?=$companyPhone;?> <br>
+						<i class="icon-envelope-alt"></i> <?=$companyEmail;?>
 					</p>
+					<?php } ?>
 				</div>
 			</div>
 			<div class="col-lg-3">
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
+                        <?php
+                            $query = "SELECT * FROM tbl_pageandfeature WHERE pStatus='2' and pCategory='2' ORDER BY pId DESC LIMIT 4";
+                            $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
+                            if($result){
+                                foreach($result as $page){
+                                extract($page);
+                        ?>
+						<li><a href="?id=<?=$pId;?>"><?=$pTitle;?></a></li>
+						<?php } } ?>
 					</ul>
 				</div>
 			</div>
@@ -42,7 +55,6 @@
 					<h5 class="widgetheading">Latest posts</h5>
 					<ul class="link-list">
 					    <?php
-                           global $con;
                            $postQuery = "SELECT * FROM tbl_post WHERE post_postStatus='2' ORDER BY post_postId DESC LIMIT 3"; 
                            $postResult = mysqli_query($con,$postQuery);
                            if($postResult){
@@ -82,19 +94,37 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="copyright">
+					    <?php 
+                         $query = "SELECT * FROM tbl_description WHERE value='copyright'";
+                         $cResult = mysqli_query($con,$query);
+
+                         if($cResult){
+                             $result = mysqli_fetch_array($cResult);
+                             extract($result);
+                    ?>
 						<p>
-							<span>&copy; Moderna 2014 All right reserved. By </span><a href="http://bootstraptaste.com" target="_blank">Bootstraptaste</a>
+                            <span><?=$copyright." ".'&copy;'." ".date("Y");?>
 						</p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<ul class="social-network">
-						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+					<?php 
+                         $query = "SELECT * FROM tbl_description WHERE value='social_url'";
+                         $sResult = mysqli_query($con,$query);
+
+                         if($sResult){
+                             $result = mysqli_fetch_array($sResult);
+                             extract($result);
+                    ?>
+						<li><a href="<?=$facebookUrl;?>" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="<?=$twitterUrl;?>" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="<?=$linkedinUrl;?>" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="<?=$pinterestUrl;?>" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="<?=$googleplusUrl;?>" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
 					</ul>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

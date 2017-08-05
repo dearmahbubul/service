@@ -43,6 +43,13 @@
                     <li><a href="allPost.php"><i class="fa fa-image"></i> Post</a></li>
                     <li><a href="allGallery.php"><i class="fa fa-heart"></i> Gallery</a></li>
                     <li><a href="userProfileMenu.php?userEditId=<?php echo $_SESSION['userId'];?>"><i class="fa fa-pencil-square fa-lg"></i> Edit Profile</a></li>
+                    <?php if($_SESSION['roleId'] <= 2){ ?>
+                        <li><a href="website_heading.php"><i class="fa fa-bandcamp"></i> Website Heading</a></li>
+                        <li><a href="website_logo.php"><i class="fa fa-compass" aria-hidden="true"></i> Website Logo</a></li>
+                        <li><a href="website_copyright.php"><i class="fa fa-copyright"></i> Copyright</a></li>
+                        <li><a href="company_details.php"><i class="fa fa-building" aria-hidden="true"></i> Company details</a></li>
+                        <li><a href="social_url.php"><i class="fa fa-share-square-o"></i> Social</a></li>
+                    <?php } ?>
                     <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
                     <li><a href="../index.php" target="_blank"><i class="fa fa-plane"></i> Live Visit Website</a></li>
                 </ul>
