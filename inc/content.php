@@ -1,5 +1,6 @@
 <section id="content">
 	<div class="container">
+	        <h4 class="heading">Feature Works</h4>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
@@ -16,7 +17,7 @@
 							<div class="box-gray aligncenter">
 								<h4><?=$pTitle?></h4>
 								<div class="icon">
-								<i class="fa fa-desktop fa-3x"></i>
+								<i class="<?=$pIconClass;?>"></i>
 								</div>
 								<p>
 								 <?=textShorten($pDetails,50);?>

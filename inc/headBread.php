@@ -12,8 +12,10 @@
                              if($hResult){
                                  $result = mysqli_fetch_array($hResult);
                                  extract($result);
+                                 $headingValue = explode(" ",$website_heading);
+                                 $span = current($headingValue);
                         ?>
-						<h2><span><?=$website_heading;?></span></h2>
+						<h2><span><?=$span;?></span> <?php for($i=1;$i<count($headingValue);$i++) echo $headingValue[$i]." "?></h2>
 						<?php }?>
 					</div>
 				</div>

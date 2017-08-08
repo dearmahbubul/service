@@ -35,12 +35,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><span>M</span>oderna</a>
+                    <?php
+                    global $con;
+                    $query = "SELECT websiteLogo FROM tbl_description WHERE value='logo'";
+                        $logoResult = mysqli_query($con,$query);
+                        $result = mysqli_fetch_array($logoResult);
+                    ?>`
+                    <a class="navbar-brand" href="index.php"><img src="Admin/uploads/<?=$result['websiteLogo'];?>" alt="" style="height: 60px;width: 200px;"></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                        <?php
-                            global $con;
+
                             $query = "SELECT * FROM tbl_menu where menuStatus='2' ORDER BY menuPosition ASC";
                             $result = mysqli_query($con,$query)->fetch_all(MYSQLI_ASSOC);
                             if($result){

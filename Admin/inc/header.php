@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"/>
     <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+      <script src="ckeditor/ckeditor.js"></script>
   </head>
   <body>
   	<div class="container-fluid header_full">

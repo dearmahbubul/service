@@ -9,22 +9,19 @@
 ?>
             <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $menuUploaderId = $_SESSION['userId'];
-    $menuUrl = $_POST['menuUrl'];
-    $menuName = $_POST['menuName'];
-    $menuStatus = $_POST['menuStatus'];
+    $website_heading = validation($_POST['website_heading']);
     
-    if(!empty($menuName) && !empty($menuUrl)){
+    if(!empty($website_heading)){
               
-        $query = "insert into tbl_menu(menuName,menuStatus,menuUploaderId,menuUrl) values('$menuName','$menuStatus','$menuUploaderId','$menuUrl')";
+        $query = "update tbl_description set website_heading='$website_heading' where value='website_heading'";
         if(mysqli_query($con,$query)){
-            $menuMsg = "Menu Uploaded succesfully";
+            $headingMsg = "Website heading updated succesfully";
         }else{
-            $menuMsg = "Menu not uploaded";
+            $headingMsg = "Website heading not updated";
         }
 
     }else{
-            $menuMsg = "Filed can't be empty";
+        $headingMsg = "Filed can't be empty";
         }
 }
 ?>
@@ -33,44 +30,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="col-md-9 heading_title">
-                                    Add menu information
+                                    Update website heading
                                 </div>
                                 <div class="col-md-3 text-right">
-                                    <a href="allmenu.php" class="btn btn-sm btn btn-primary"><i class="fa fa-th"></i> All menu information</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
                             <?php
-                                if(isset($menuMsg)){
-                                    echo "<span style='color:green;font-size:20px'>".$menuMsg."</span>";
+                                if(isset($headingMsg)){
+                                    echo "<script>alert('$headingMsg')</script>";
+                                    //echo "<span style='color:green;font-size:20px'>".$headingMsg."</span>";
                                 }
                             ?>
                             <?php
-                                 $query = "SELECT * FROM tbl_description WHERE value='$menuId'";
-                                 $adminResult = mysqli_query($con,$query);
+                                 $query = "SELECT website_heading FROM tbl_description WHERE value='website_heading'";
+                                 $headingResult = mysqli_query($con,$query);
 
-                                 if($adminResult){
-                                     $result = mysqli_fetch_array($adminResult);
+                                 if($headingResult){
+                                     $result = mysqli_fetch_array($headingResult);
                             ?>` 
                                 <div class="form-group">
-                                    <label for="" class="col-sm-3 control-label">Menu URL</label>
+                                    <label for="" class="col-sm-3 control-label">Website heading</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="menuUrl" class="form-control" placeholder="Menu URL" required>
+                                        <input type="text" name="website_heading" class="form-control" value="<?=$result['website_heading'];?>" required>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="" class="col-sm-3 control-label">Menu Name</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="menuName" class="form-control" placeholder="Menu name" required/>
-                                    </div>
-                                </div>
-                                    
                             </div>
                             <div class="panel-footer text-center">
                                 <button class="btn btn-sm btn-primary">Update heading</button>
                             </div>
+                            <?php } ?>
                         </div>
                     </form>
                 </div>

@@ -19,7 +19,7 @@
                 <div class="flex-caption">
                     <h3><?=$banner['bannerTitle'];?></h3> 
 					<p><?=textShorten($banner['bannerDetails'],50);?></p> 
-					<a href="#" class="btn btn-theme"><?=$banner['bannerButton'];?></a>
+					<a href="postView.php?postViewId=<?=$banner['bannerId'];?>" class="btn btn-theme"><?=$banner['bannerButton'];?></a>
                 </div>
               </li>
               <?php } }else{

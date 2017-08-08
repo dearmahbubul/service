@@ -43,7 +43,7 @@
                           		<thead class="table_head">
                             		<tr>
                                     	<th>S.N</th>
-                                    	<th>Portfolio Name</th>
+                                    	<th>Portfolio Category</th>
                                         <th>Portfolio Status</th>
                                         <th class="hidden-xs">Portfolio Image</th>
                                         <th class="hidden-xs">Portfolio Title</th>
@@ -60,7 +60,12 @@
                                  ?>
                                 	<tr>
                                         <td><?=++$i;?></td>
-                                    	<td><?=$portfolio['portfolioName'];?></td>
+                                        <td><?php if($portfolio['portfolio_categoryId']==1){echo "Web";}
+                                            elseif($portfolio['portfolio_categoryId']==3){echo "Graphic";}
+                                            elseif($portfolio['portfolio_categoryId']==2){echo "Icons";}
+                                            else{echo "";}
+                                            
+                                            ?></td>
                                         <td><?php if($portfolio['portfolioStatus']==1){echo "Unpublish";}else{echo "Publish";}?></td>
                                         <td class="hidden-xs"><img src="uploads/portfolioImage/<?=$portfolio['portfolioImage'];?>" alt="" style="width:70px;height:50px;"></td>
                                         <td class="hidden-xs"><?=textShorten($portfolio['portfolioTitle'],50);?>...</td>

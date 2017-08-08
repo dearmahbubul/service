@@ -24,11 +24,14 @@
                     <?php } ?>
                     <?php if($_SESSION['roleId'] <= 4){ ?>
                         <li><a href="allCategory.php"><i class="fa fa-table"></i> Category</a></li>
+                        <li><a href="allPageAndFeature.php"><i class="fa fa-file-text-o"></i> Page And Feature</a></li>
 
                     <?php } ?>
                     
                     <?php if($_SESSION['roleId'] <= 3){ ?>
                        <li><a href="allMenu.php"><i class="fa fa-venus-double" aria-hidden="true"></i> Menu</a></li>
+                       <li><a href="allPortfolio.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Portfolio</a></li>
+                       <li><a href="allPage.php"><i class="fa fa-venus-double" aria-hidden="true"></i> Menu</a></li>
                        <li><a href="allPortfolio.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Portfolio</a></li>
                        <?php
                             global $con;
@@ -54,3 +57,4 @@
                     <li><a href="../index.php" target="_blank"><i class="fa fa-plane"></i> Live Visit Website</a></li>
                 </ul>
             </div><!--sidebar end-->
+            <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, facilis, illum soluta voluptatum odit dignissimos dolore nam earum rem ipsa ipsam cupiditate deleniti delectus porro harum deserunt molestiae aliquam. Doloribus, aperiam. Voluptas nisi consectetur eveniet pariatur dignissimos culpa nemo omnis, aut consequatur atque, consequuntur illo quidem. Quas consectetur, ipsam. Provident quaerat minus delectus dolore, doloribus amet, ullam saepe. Facilis blanditiis aliquid, optio deleniti suscipit odit enim hic vero laudantium ex vel dolorem velit ipsa harum aperiam fuga id reprehenderit sed laboriosam nobis quaerat aspernatur. Accusantium itaque perspiciatis odit doloribus odio sed, numquam, rem rerum, debitis nam et quibusdam molestias dignissimos?-->
