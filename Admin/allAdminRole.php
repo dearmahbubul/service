@@ -28,9 +28,6 @@
                             <div class="col-md-9 heading_title">
                                 All Role Information View
                              </div>
-                             <div class="col-md-3 text-right">
-                             	<a href="addrole.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> Add role</a>
-                            </div>
                             <div class="clearfix"></div>
                         </div>
                       <div class="panel-body">

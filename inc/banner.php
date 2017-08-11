@@ -18,8 +18,8 @@
                 <img src="Admin/uploads/bannerImage/<?=$banner['bannerImage'];?>" alt="" />
                 <div class="flex-caption">
                     <h3><?=$banner['bannerTitle'];?></h3> 
-					<p><?=textShorten($banner['bannerDetails'],50);?></p> 
-					<a href="postView.php?postViewId=<?=$banner['bannerId'];?>" class="btn btn-theme"><?=$banner['bannerButton'];?></a>
+					<?=textShorten($banner['bannerDetails'],120);?>
+					<a href="postView.php?bannerId=<?=$banner['bannerId'];?>" class="btn btn-theme"><?=$banner['bannerButton'];?></a>
                 </div>
               </li>
               <?php } }else{

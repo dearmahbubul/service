@@ -68,8 +68,8 @@
                                         <td class="hidden-xs"><?=textShorten($p['pDetails'],50);?></td>
                                         
                                         <td>
-                                        	<a href="viewp.php?pViewId=<?=$p['pId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                            <a href="?pEditId=<?=$p['pId'];?>"><i class="fa fa-edit fa-lg"></i></a>
+                                        	
+                                            <a href="EditPageAndFeature.php?pEditId=<?=$p['pId'];?>"><i class="fa fa-edit fa-lg"></i></a>
                                             <a onclick="return confirm('Are you sure to remove this id');" href="?pDeleteId=<?=$p['pId'];?>"><i class="fa fa-trash fa-lg"></i></a>
                                         </td>
                                     </tr>

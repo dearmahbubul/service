@@ -15,13 +15,14 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     $pTitle = validation($_POST['pTitle']);
-    $pDetails = validation($_POST['pDetails']);
+    $pDetails = $_POST['pDetails'];
     $pIconClass = validation($_POST['pIconClass']);
     $pStatus = validation($_POST['pStatus']);
     $pCategory = validation($_POST['pCategory']);
     $pUploaderId = $_SESSION['userId'];
+    $pUploaderName = $_SESSION['userName'];
     if(!empty($pTitle) && !empty($pDetails)){
-        $query = "insert into tbl_pageandfeature(pTitle,pDetails,pIconClass,pStatus,pCategory,pUploaderId) values('$pTitle','$pDetails','$pIconClass','$pStatus','$pCategory','$pUploaderId')";
+        $query = "insert into tbl_pageandfeature(pTitle,pDetails,pIconClass,pStatus,pCategory,pUploaderId,pUploaderName) values('$pTitle','$pDetails','$pIconClass','$pStatus','$pCategory','$pUploaderId','$pUploaderName')";
         if (mysqli_query($con, $query)) {
             $Msg = "Uploaded succesfully";
         } else {

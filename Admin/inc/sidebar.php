@@ -31,8 +31,7 @@
                     <?php if($_SESSION['roleId'] <= 3){ ?>
                        <li><a href="allMenu.php"><i class="fa fa-venus-double" aria-hidden="true"></i> Menu</a></li>
                        <li><a href="allPortfolio.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Portfolio</a></li>
-                       <li><a href="allPage.php"><i class="fa fa-venus-double" aria-hidden="true"></i> Menu</a></li>
-                       <li><a href="allPortfolio.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Portfolio</a></li>
+                       
                        <?php
                             global $con;
                             $query = "SELECT * FROM tbl_contact WHERE contactStatus='1'";

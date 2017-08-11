@@ -22,6 +22,7 @@ require_once("config/config.php");
     function getPart($addPart){
             include_once "inc/".$addPart;
         }
+
     function validation($data){
         $data = trim($data);
         $data = stripcslashes($data);

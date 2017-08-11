@@ -52,6 +52,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         <div class="col-md-9 heading_title">
                             contact Information
                         </div>
+                        <div class="col-md-3 text-right">
+                            <a href="allMessage.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> All Message</a>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">

@@ -71,8 +71,8 @@
                                         <td class="hidden-xs"><?=textShorten($portfolio['portfolioTitle'],50);?>...</td>
                                         
                                         <td>
-                                        	<a href="viewportfolio.php?portfolioViewId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                           <a href="portfolioEdit.php?portfolioEditId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
+                                        	<!--<a href="viewportfolio.php?portfolioViewId=<?php//$portfolio['portfolioId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
+                                           <a href="portfolioEdit.php?portfolioEditId=<?php //$portfolio['portfolioId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>-->
                                            <?php if($_SESSION['roleId'] <= 2 || $portfolio['portfolioUploaderId'] == $_SESSION['userId']){ ?>
                                             <a onclick="return confirm('Are you sure to remove this portfolio');" href="?portfolioDeleteId=<?=$portfolio['portfolioId'];?>"><i class="fa fa-trash fa-lg"></i></a>
                                           <?php } ?>

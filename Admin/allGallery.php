@@ -61,8 +61,8 @@
                                         <td><a href="viewUser.php?userViewId=<?=$gallery['galleryUploaderId'];?>"><?=$gallery['galleryUploaderName'];?></a></td>
                                         <td><img src="uploads/galleryImage/<?=$gallery['galleryImage'];?>" alt="" style="width:270px;height:100px;"></td>                                       
                                         <td>
-                                        	<a href="viewgallery.php?galleryViewId=<?=$gallery['galleryId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                           <a href="galleryEdit.php?galleryEditId=<?=$gallery['galleryId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
+                                        	<!--<a href="viewgallery.php?galleryViewId=<?php //echo $gallery['galleryId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
+                                           <a href="galleryEdit.php?galleryEditId=<?php //echo $gallery['galleryId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>-->
                                             <a onclick="return confirm('Are you sure to remove this gallery');" href="?galleryDeleteId=<?=$gallery['galleryId'];?>"><i class="fa fa-trash fa-lg"></i></a>
                                         </td>
                                     </tr>

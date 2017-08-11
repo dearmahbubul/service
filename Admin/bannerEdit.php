@@ -21,7 +21,7 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $bannerTitle = validation($_POST['bannerTitle']);
-    $bannerDetails = validation($_POST['bannerDetails']);
+    $bannerDetails = $_POST['bannerDetails'];
     $bannerButton = validation($_POST['bannerButton']);
     $bannerButtonUrl = validation($_POST['bannerButtonUrl']);
     $bannerType = validation($_POST['bannerType']);
@@ -74,6 +74,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <div class="panel-heading">
                         <div class="col-md-9 heading_title">
                             Banner Information
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <a href="allBanner.php" class="btn btn-sm btn btn-primary"><i class="fa fa-plus-circle"></i> All Banner</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>

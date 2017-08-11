@@ -25,7 +25,7 @@
 									
 							</div>
 							<div class="box-bottom">
-								<a href="?Id=<?=$pId?>">Learn more</a>
+								<a href="postView.php?featureId=<?=$pId?>">Learn more</a>
 							</div>
 						</div>
 					</div>

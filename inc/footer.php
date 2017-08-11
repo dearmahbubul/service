@@ -45,7 +45,7 @@
                                 foreach($result as $page){
                                 extract($page);
                         ?>
-						<li><a href="?id=<?=$pId;?>"><?=$pTitle;?></a></li>
+						<li><a href="postView.php?pageId=<?=$pId;?>"><?=$pTitle;?></a></li>
 						<?php } } ?>
 					</ul>
 				</div>
@@ -61,7 +61,7 @@
                               while($post = $postResult->fetch_array()){
                                   extract($post);
                          ?>
-						<li><a href="?postId=<?=$post_postId;?>"><?=$post_postTitle;?></a></li>
+						<li><a href="postView.php?postViewId=<?=$post_postId;?>"><?=$post_postTitle;?></a></li>
 						<?php } }else{echo "";} ?>
 					</ul>
 				</div>

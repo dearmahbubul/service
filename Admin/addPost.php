@@ -15,7 +15,7 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     $post_postTitle = validation($_POST['post_postTitle']);
-    $post_postDetails = validation($_POST['post_postDetails']);
+    $post_postDetails = $_POST['post_postDetails'];
     $post_postButtonText = validation($_POST['post_postButtonText']);
     $post_postStatus = validation($_POST['post_postStatus']);
     $post_categoryId = validation($_POST['post_categoryId']);
@@ -73,7 +73,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Post Details</label>
                                         <div class="col-sm-8">
-                                            <textarea name="post_postDetails" class="form-control" rows="5"></textarea>
+                                            <textarea name="post_postDetails" id="post_postDetails" class="form-control" rows="5"></textarea>
+                                            <script>
+                                                CKEDITOR.replace('post_postDetails');
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="form-group">

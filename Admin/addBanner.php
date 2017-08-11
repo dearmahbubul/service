@@ -15,7 +15,7 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     $bannerTitle = validation($_POST['bannerTitle']);
-    $bannerDetails = validation($_POST['bannerDetails']);
+    $bannerDetails = $_POST['bannerDetails'];
     $bannerButton = validation($_POST['bannerButton']);
     $bannerType = validation($_POST['bannerType']);
     $bannerUploaderName = $_SESSION['userName'];
@@ -72,7 +72,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Banner Details</label>
                                         <div class="col-sm-8">
-                                            <textarea name="bannerDetails" class="form-control" rows="5"></textarea>
+                                            <textarea name="bannerDetails" id="bannerDetails" class="form-control" rows="5"></textarea>
+                                            <script>
+                                                CKEDITOR.replace('bannerDetails');
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="form-group">

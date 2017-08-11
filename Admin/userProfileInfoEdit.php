@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $userCountry = validation($_POST['userCountry']);
     $userNumber = validation($_POST['userNumber']);
     $roleId = validation($_POST['roleId']);
-    $userComment = validation($_POST['userComment']);
+    $userComment = $_POST['userComment'];
     
     //$userPass = validation($_POST['userPass']);
     //$userRePass = validation($_POST['userRePass']);
@@ -139,6 +139,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                 <label for="" class="col-sm-3 control-label">Comment</label>
                                 <div class="col-sm-8">
                                     <textarea name="userComment" class="form-control" rows="5"><?=$result['userComment'];?></textarea>
+                                    <script>
+                                        CKEDITOR.replace('userComment');
+                                    </script>
                                 </div>
                             </div>
                             <!--<div class="form-group">
