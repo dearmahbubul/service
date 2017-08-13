@@ -6,8 +6,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
+			<?php
+				$perPage = 2;
+				
+				if(isset($_GET['pageNumber'])){
+					$pageNumber = $_GET['pageNumber'];
+				}else{
+					$pageNumber = 1;
+				}
+				$startPage = ($pageNumber-1)*$perPage;
+			
+			?>
 			 <?php
-               $postQuery = "SELECT * FROM tbl_post WHERE post_postStatus='2'"; 
+               $postQuery = "SELECT * FROM tbl_post WHERE post_postStatus='2' order by post_postId DESC LIMIT $startPage,$perPage"; 
                $postResult = mysqli_query($con,$postQuery);
                if($postResult){
                   while($post = $postResult->fetch_array()){
@@ -18,7 +29,7 @@
 							<div class="post-heading">
 								<h3><a href="postView.php?postViewId=<?=$post_postId;?>"><?=$post_postTitle;?></a></h3>
 							</div>
-							<img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" />
+							<img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" style="width:730px;height:350px;"/>
 						</div>
 						<p><?=textShorten($post_postDetails,280);?></p>
 						<div class="bottom-article">
@@ -109,10 +120,27 @@
 						</div>
 				</article>-->
 				<div id="pagination">
-					<span class="all">Page 1 of 3</span>
+										<?php
+               $query = "SELECT * FROM tbl_post WHERE post_postStatus='2'";
+                   $result = mysqli_query($con,$query);
+                    $total_rows = mysqli_num_rows($result);
+                    $total_pages = ceil($total_rows/$perPage);
+					echo "<span class='all'>Page {$pageNumber} of {$total_pages}</span>";
+                    echo "<a href='blog.php?pageNumber=1'>First Page</a>";
+            for($i=1;$i<=$total_pages;$i++):?>
+               <a href="blog.php?pageNumber=<?=$i;?>" <?php if(isset($_GET['pageNumber'])){ 
+				echo ($_GET['pageNumber']== $i)?"style='background-color:#F53209'":"";
+			   }
+			   ?>><?=$i;?></a>
+            <?php endfor;
+                echo "<a href='blog.php?pageNumber=$total_pages'>"."Last Page</a>";                   
+            ?>
+	
+			
+					 <!--<span class="all">Page 1 of 3</span>
 					<span class="current">1</span>
 					<a href="#" class="inactive">2</a>
-					<a href="#" class="inactive">3</a>
+					<a href="#" class="inactive">3</a>-->
 				</div>
 			</div>
 			<div class="col-lg-4">

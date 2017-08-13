@@ -69,7 +69,7 @@
                                         
                                         <td>
                                         	<a href="viewPost.php?postViewId=<?=$post['post_postId'];?>"><i class="fa fa-plus-square fa-lg"></i></a>
-                                           <a href="postEdit.php?postEditId=<?=$post['post_postId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
+                                           <a href="editPost.php?postEditId=<?=$post['post_postId'];?>"><i class="fa fa-pencil-square fa-lg"></i></a>
                                            <?php if($_SESSION['roleId'] <= 2){ ?>
                                             <a onclick="return confirm('Are you sure to remove this post');" href="?postDeleteId=<?=$post['post_postId'];?>"><i class="fa fa-trash fa-lg"></i></a>
                                           <?php } ?>
