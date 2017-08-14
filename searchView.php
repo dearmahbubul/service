@@ -47,7 +47,8 @@
     
                     $bannerResult = mysqli_query($con,$bannerQuery);
                     if($bannerResult){
-                        $banner = $bannerResult->fetch_array();
+						while($banner = $bannerResult->fetch_array()){
+                        
                             extract($banner);
                             ?>
                             <article>
@@ -69,7 +70,7 @@
         
 
                             </article>
-                        <?php  }?>
+                        <?php } }?>
                 </div>
                 
                 
