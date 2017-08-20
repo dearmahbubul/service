@@ -17,10 +17,10 @@
 							<div class="box-gray aligncenter">
 								<h4><?=$pTitle?></h4>
 								<div class="icon">
-								<i class="<?=$pIconClass;?>"></i>
+								<i class="<?=$pIconClass;?>" style="font-size:50px;"></i>
 								</div>
 								<p>
-								 <?=textShorten($pDetails,50);?>
+								 <?=textShorten($pDetails,60);?>
 								</p>
 									
 							</div>

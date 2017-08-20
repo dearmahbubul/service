@@ -37,7 +37,7 @@
                                 <div class="post-heading">
                                     <h3><?=$post_postTitle;?></h3>
                                 </div>
-                                <img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" />
+                                <img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" style="width:730px;height:350px;"/>
                             </div>
                         <div class="bottom-article">
                             <ul class="meta-post">
@@ -67,7 +67,7 @@
                                     <div class="post-heading">
                                         <h3><?=$post_postTitle;?></h3>
                                     </div>
-                                    <img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" />
+                                    <img src="Admin/uploads/postImage/<?=$post_postImage;?>" alt="" style="width:730px;height:350px;"/>
                                 </div>
                                 <div class="bottom-article">
                                     <ul class="meta-post">
@@ -99,7 +99,7 @@
                                     <div class="post-heading">
                                         <h3><?=$bannerTitle;?></h3>
                                     </div>
-                                    <img src="Admin/uploads/bannerImage/<?=$bannerImage;?>" alt="" />
+                                    <img src="Admin/uploads/bannerImage/<?=$bannerImage;?>" alt="" style="width:730px;height:350px;"/>
                                 </div>
                                 <div class="bottom-article">
                                     <ul class="meta-post">

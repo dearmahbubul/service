@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="col-md-9 heading_title">
-                    Update website heading
+                    Update website copyright
                 </div>
                 <div class="col-md-3 text-right">
                 </div>
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 $result = mysqli_fetch_array($copyrightResult);
                 ?>`
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Website heading</label>
+                    <label for="" class="col-sm-3 control-label">Website copyright</label>
                     <div class="col-sm-8">
                         <input type="text" name="copyright" class="form-control" value="<?=$result['copyright'];?>" required>
                     </div>
